@@ -1,0 +1,14 @@
+import requests 
+
+url = "https://swapi.dev/api/planets/"
+response = requests.get(url)
+if response.status_code == 200:
+    # Successful GET
+    data = response.json()
+    planets = data.get('results', [])
+    print("List of Planets:")
+    for planet in planets:
+        print(f"- {planet['name']}")
+else:
+# If the request fails, print an error message with the status code
+    print(f"Failed to fetch planets. Status code: {response.status_code}")
